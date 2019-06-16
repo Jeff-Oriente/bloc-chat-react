@@ -16,14 +16,18 @@ class RoomList extends Component {
       this.setState({ rooms: this.state.rooms.concat( room )})
     });
   }
-  
+
   render() {
     return (
       <div>
-        Hello
+        {this.state.rooms.map(roomData =>
+          <li key={roomData.key}>
+            {roomData.name}
+          </li>
+        )}
       </div>
-    )
+    );
+  }
 }
-
 
 export default RoomList;
