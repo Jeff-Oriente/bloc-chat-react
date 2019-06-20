@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CreateRoomForm from './CreateRoomForm';
 
 class RoomList extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class RoomList extends Component {
             {roomData.name}
           </li>
         )}
+        <CreateRoomForm roomsRef={this.roomsRef} />
       </div>
     );
   }
