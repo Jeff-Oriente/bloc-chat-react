@@ -21,9 +21,10 @@ function App() {
   // activeRoomKey
 
   // handleRoomChange would set state for activeRoomKey
+  // put handleRoomChange={this.handleRoomChange} next to {firebase} below in RoomList
   return (
     <div className="App">
-      <RoomList firebase={firebase} handleRoomChange={this.handleRoomChange}/>
+      <RoomList firebase={firebase}/>
       <MessageList firebase={firebase} activeRoomKey={"2"}/>
     </div>
   );
