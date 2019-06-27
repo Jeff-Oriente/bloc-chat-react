@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import logo from './logo.svg';
 import './App.css';
 import RoomList from './Components/RoomList';
+import MessageList from './Components/MessageList';
 
 var firebaseConfig = {
     apiKey: "AIzaSyA34rEwyjTrRNW510TEsrxQQb8UCFuVGL4",
@@ -17,9 +18,13 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
 function App() {
+  // activeRoomKey
+
+  // handleRoomChange would set state for activeRoomKey
   return (
     <div className="App">
-      <RoomList firebase={firebase}/>
+      <RoomList firebase={firebase} handleRoomChange={this.handleRoomChange}/>
+      <MessageList firebase={firebase} activeRoomKey={"2"}/>
     </div>
   );
 }
