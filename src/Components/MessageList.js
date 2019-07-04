@@ -24,16 +24,26 @@ class MessageList extends Component {
     })
   }
 
+  filterMessage(message, index){
+    if(message.roomId === this.props.activeRoomKey){
+      return (
+        <div key={'msg' + index}>
+          <p>{message.username}</p>
+          <p>{message.sentAt}</p>
+          <p>{message.content}</p>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
-      <ul>
-      {this.state.totalMessages.map(messageData =>
-        <li key={messageData.key}>
-          {messageData.username}: {messageData.content}
-        </li>
-      )}
-      </ul>
-    )
+      <section>
+        {this.state.totalMessages.map((messageData, index) =>
+            this.filterMessage(messageData, index)
+        )}
+      </section>
+    );
   }
 }
 

@@ -18,11 +18,12 @@ class RoomList extends Component {
     });
   }
 
+
   render() {
     return (
       <div>
         {this.state.rooms.map(roomData =>
-          <li key={roomData.key}>
+          <li key={roomData.key} onClick={(e) => this.props.setActiveRoom(roomData)}>
             {roomData.name}
           </li>
         )}

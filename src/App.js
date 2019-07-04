@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import logo from './logo.svg';
 import './App.css';
@@ -17,17 +17,27 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-function App() {
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {activeRoom: 'null'}
+  }
+
+  setActiveRoom(room) {
+    this.setState({activeRoom: room})
+  }
   // activeRoomKey
 
   // handleRoomChange would set state for activeRoomKey
   // put handleRoomChange={this.handleRoomChange} next to {firebase} below in RoomList
-  return (
-    <div className="App">
-      <RoomList firebase={firebase}/>
-      <MessageList firebase={firebase} activeRoomKey={"2"}/>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <RoomList firebase={firebase} setActiveRoom={this.setActiveRoom.bind(this)}/>
+        <MessageList firebase={firebase} activeRoomKey={this.state.activeRoom.key}/>
+      </div>
+    );
+  }
 }
 
 export default App;
