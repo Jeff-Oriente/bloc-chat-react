@@ -20,7 +20,7 @@ var firebaseConfig = {
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {activeRoom: 'null'}
+    this.state = {activeRoom: {}}
   }
 
   setActiveRoom(room) {

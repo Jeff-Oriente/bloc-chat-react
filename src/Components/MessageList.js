@@ -15,22 +15,16 @@ class MessageList extends Component {
     this.messageRef.on('child_added', snapshot => {
       const message = snapshot.val();
       message.key = snapshot.key;
-      console.log(message.roomId, this.props.activeRoomKey);
-      // "1" === 1
-      if (Number(message.roomId) === Number(this.props.activeRoomKey)) {
-        this.setState({ totalMessages: this.state.totalMessages.concat( message )})
-      }
 
+      this.setState({ totalMessages: this.state.totalMessages.concat( message )})
     })
   }
 
   filterMessage(message, index){
-    if(message.roomId === this.props.activeRoomKey){
+    if (Number(message.roomId) === Number(this.props.activeRoomKey)){
       return (
         <div key={'msg' + index}>
-          <p>{message.username}</p>
-          <p>{message.sentAt}</p>
-          <p>{message.content}</p>
+          <p>{message.username} ({message.sentAt}): {message.content}</p>
         </div>
       )
     }
