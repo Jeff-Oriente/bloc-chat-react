@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import RoomList from './Components/RoomList';
 import MessageList from './Components/MessageList';
+import User from './Components/User';
 
 var firebaseConfig = {
     apiKey: "AIzaSyA34rEwyjTrRNW510TEsrxQQb8UCFuVGL4",
@@ -20,7 +21,14 @@ var firebaseConfig = {
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {activeRoom: {}}
+    this.state = {
+      activeRoom: {},
+      user: {}
+    }
+  }
+
+  setUser(user) {
+    this.setState({user: user})
   }
 
   setActiveRoom(room) {
@@ -35,6 +43,7 @@ class App extends Component {
       <div className="App">
         <RoomList firebase={firebase} setActiveRoom={this.setActiveRoom.bind(this)}/>
         <MessageList firebase={firebase} activeRoomKey={this.state.activeRoom.key}/>
+        <User firebase={firebase} setUser={this.setUser.bind(this)}/>
       </div>
     );
   }
