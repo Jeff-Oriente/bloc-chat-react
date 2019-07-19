@@ -20,9 +20,10 @@ class User extends Component {
   render () {
     return (
       <section>
-
-        <button onClick={() => this.signIn()}>Sign in</button>
-        <button onClick={() => this.signOut()}>Sign out</button>
+        <div>{this.props.user ? this.props.user.displayName : 'Guest'}</div>
+        
+          <button onClick={() => this.signIn()}>Sign in</button>
+          <button onClick={() => this.signOut()}>Sign out</button>
 
       </section>
     )

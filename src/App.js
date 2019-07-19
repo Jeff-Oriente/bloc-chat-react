@@ -13,10 +13,14 @@ var firebaseConfig = {
     projectId: "bloc-chat-react-4ad6d",
     storageBucket: "bloc-chat-react-4ad6d.appspot.com",
     messagingSenderId: "250871938568",
-    appId: "1:250871938568:web:228ec14176f4ce68"
+    appID: "1:250871938568:web:228ec14176f4ce68"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+//   firebase.database.enableLogging(function(message) {
+//   console.log("[FIREBASE]", message);
+// });
 
 class App extends Component {
   constructor(props){
