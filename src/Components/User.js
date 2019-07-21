@@ -11,10 +11,9 @@ class User extends Component {
   signIn() {
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
     this.props.firebase.auth().signInWithPopup( provider ).then((result) => {
+      const user = result.user;
       this.props.setUser(user);
-    })
-
-
+    });
   }
 
   signOut() {
@@ -22,6 +21,7 @@ class User extends Component {
   }
 
   render () {
+    console.log(this.props);
     return (
       <section>
         <div>{this.props.user ? this.props.user.displayName : 'Guest'}</div>
