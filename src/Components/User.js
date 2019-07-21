@@ -24,7 +24,7 @@ class User extends Component {
     console.log(this.props);
     return (
       <section>
-        <div>{this.props.user ? this.props.user.displayName : 'Guest'}</div>
+        <div>{this.props.userName ? this.props.userName.displayName : 'Guest'}</div>
           <button onClick={() => this.signIn()}>Sign in</button>
           <button onClick={() => this.signOut()}>Sign out</button>
 
