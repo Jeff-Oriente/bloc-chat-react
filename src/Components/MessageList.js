@@ -20,6 +20,16 @@ class MessageList extends Component {
     })
   }
 
+  createNewMessage(text) {
+    this.messageRef.push({
+      username: (this.props.user ? this.props.user.displayName : 'Jeff'),
+      content: text,
+      sentAt: Date.now(),
+      roomId: this.props.activeRoomKey,
+    });
+
+  }
+
   filterMessage(message, index){
     if (Number(message.roomId) === Number(this.props.activeRoomKey)){
       return (
@@ -30,12 +40,27 @@ class MessageList extends Component {
     }
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    //this.props.roomsRef.push({ name: this.state.newRoomName })
+    this.createNewMessage(this.state.newMessage)
+    this.setState({newMessage: ''})
+  }
+
+  handleChange(e) {
+    this.setState({newMessage: e.target.value})
+  }
+
   render() {
     return (
       <section>
         {this.state.totalMessages.map((messageData, index) =>
             this.filterMessage(messageData, index)
         )}
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <input type="text" value={this.state.newMessage} onChange={(e) => this.handleChange(e)} />
+          <input type="submit" value="New Message"/>
+        </form>
       </section>
     );
   }
