@@ -58,8 +58,8 @@ class MessageList extends Component {
             this.filterMessage(messageData, index)
         )}
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <input type="text" value={this.state.newMessage} onChange={(e) => this.handleChange(e)} />
-          <input type="submit" value="New Message"/>
+          <input type="text" value={this.state.newMessage} onChange={(e) => this.handleChange(e)} placeholder="Send Message"/>
+          <input type="submit" value="Send Message Here" />
         </form>
       </section>
     );
